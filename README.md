@@ -1,3 +1,3 @@
 # recipe-app-api
-https://travis-ci.org/JesusEduardo2028/recipe-app-api.svg?branch=master
+[![Build Status](https://travis-ci.org/JesusEduardo2028/recipe-app-api.svg?branch=master)](https://travis-ci.org/JesusEduardo2028/recipe-app-api)
 Test project to learn django
