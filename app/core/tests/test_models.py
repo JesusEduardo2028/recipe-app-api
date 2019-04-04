@@ -49,7 +49,8 @@ class ModelTests(TestCase):
         self.assertTrue(user.is_staff)
 
     def test_tag_str(self):
-        """Test Tag String reporesentaion"""
+        """Test Tag String Representation"""
+
         tag = models.Tag.objects.create(
             user=sample_user(),
             name='Vegan'
