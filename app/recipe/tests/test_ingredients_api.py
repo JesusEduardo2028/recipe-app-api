@@ -1,11 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 from django.test import TestCase
-
-
 from rest_framework import status
 from rest_framework.test import APIClient
-
 from core.models import Ingredient
 from recipe.serializers import IngredientSerializer
 
@@ -23,7 +20,8 @@ class PublicIngredientsApiTests(TestCase):
         """Test that login is required to access the endpoint"""
 
         res = self.client.get(INGREDIENTS_URL)
-        assert(res.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
+
 
 class PrivateIngredientsApiTest(TestCase):
     """Test the private ingredients API"""
@@ -53,7 +51,8 @@ class PrivateIngredientsApiTest(TestCase):
     def test_ingredients_limited_to_user(self):
         """Test that only ingredients for authenticated users are returned"""
 
-        user2= get_user_model().objects.create_user('other@test.com', '1234556')
+        user2 = get_user_model().objects.create_user('other@test.com',
+                                                     '1234556')
         Ingredient.objects.create(user=user2, name='Vinager')
         ingredient = Ingredient.objects.create(user=self.user, name='Tumeric')
         res = self.client.get(INGREDIENTS_URL)

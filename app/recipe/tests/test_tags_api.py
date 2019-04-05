@@ -66,7 +66,7 @@ class PrivateTagsApiTests(TestCase):
         payload = {
             'name': 'Test Tag!'
         }
-        res= self.client.post(TAGS_URL, payload)
+        res = self.client.post(TAGS_URL, payload)
 
         exists = Tag.objects.filter(
             user=self.user,
